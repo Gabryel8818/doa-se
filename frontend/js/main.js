@@ -17,28 +17,24 @@ const firebaseConfig = {
   const auth = firebase.auth()
 
 
-  firebase.auth().onAuthStateChanged(function(user){
-      if (user){
-          var email = user.email
-          document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
-
-
-
-
-      }else
-      window.location.href = "404.html"
-  })
-
-
   logout.addEventListener('click', function () {
     firebase
         .auth()
         .signOut()
         .then(function () {
-          window.location.href = "login.html";
+          window.location.href = "index.html";
 
         }, function (error) {
             console.error(error);
-            window.location.href = "login.html";
+            window.location.href = "index.html";
           });
 });
+
+firebase.auth().onAuthStateChanged(function(user){
+  if (user){
+      var email = user.email
+      document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
+  }else
+    console.log("disconnected")
+    
+})
