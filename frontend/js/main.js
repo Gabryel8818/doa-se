@@ -7,7 +7,7 @@ const firebaseConfig = {
     appId: "1:389479966724:web:60b9123f18dab6342fad51",
     measurementId: "G-L4NYQFYF69"
   };
-  
+
 
   var logout = document.querySelector("#logout")
 
@@ -36,5 +36,5 @@ firebase.auth().onAuthStateChanged(function(user){
       document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
   }else
     console.log("disconnected")
-    
+
 })
