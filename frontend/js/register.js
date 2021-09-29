@@ -21,7 +21,7 @@ const firebaseConfig = {
   });
 
 
-const url_to_fetch = "http://ec2-18-231-54-129.sa-east-1.compute.amazonaws.com:8086/doador"
+const url_to_fetch = "http://ec2-18-228-154-34.sa-east-1.compute.amazonaws.com:8086/doador"
 
 
   // SIGNUP
@@ -74,3 +74,21 @@ const url_to_fetch = "http://ec2-18-231-54-129.sa-east-1.compute.amazonaws.com:8
 
 
   }
+
+
+function buscaCEP(){
+  cep = document.getElementById('signup-cep').value
+  url_to_cep =  `https://viacep.com.br/ws/${cep}/json/`
+  const options =  {
+    method: 'GET',
+    mode: 'cors'
+  }
+
+  fetch(url_to_cep,options)
+      .then(response => {
+        console.log(response.json())
+        document.querySelector('#signup-estado').innerHTML = "São Paulo"
+        console.log(url_to_cep)
+
+      })
+}
