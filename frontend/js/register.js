@@ -78,6 +78,7 @@ const url_to_fetch = "http://ec2-18-228-154-34.sa-east-1.compute.amazonaws.com:8
 
 function buscaCEP(){
   cep = document.getElementById('signup-cep').value
+
   url_to_cep =  `https://viacep.com.br/ws/${cep}/json/`
   const options =  {
     method: 'GET',
@@ -85,10 +86,13 @@ function buscaCEP(){
   }
 
   fetch(url_to_cep,options)
-      .then(response => {
-        console.log(response.json())
-        document.querySelector('#signup-estado').innerHTML = "São Paulo"
-        console.log(url_to_cep)
+      .then(async (response) => {
+        var viacep_response = await response.json()
+          console.log(viacep_response)
+        console.log(viacep_response.logradouro);
+        document.getElementById('signup-rua').value = viacep_response.logradouro
+        document.getElementById('signup-estado').value = viacep_response.uf
 
+        
       })
 }
