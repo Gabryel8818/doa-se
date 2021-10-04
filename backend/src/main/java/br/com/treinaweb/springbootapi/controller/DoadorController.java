@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.treinaweb.springbootapi.entity.Doador;
 import br.com.treinaweb.springbootapi.repository.DoadorRepository;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Log
+@Slf4j
 public class DoadorController {
 	
 	private final static String FIND_ALL = "Realizando consulta de todos os Doador...";
@@ -29,6 +29,7 @@ public class DoadorController {
 	private final static String UPDATE_DOADOR = "Atualizando Doador! ";
 	private final static String NOT_FOUND_DOADOR = "Doador não encontrado! ";
 	private final static String DELETE_DOADOR = "Doador deletado da base!";
+	private static final String CORS_TESTE = "Testando CORS";
 
 	@Autowired
 	private DoadorRepository _doadorRepository;
@@ -39,11 +40,11 @@ public class DoadorController {
 		return _doadorRepository.findAll();
 	}
 
-	@RequestMapping(value = "/doador/{email}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Doador> GetByEmail(@PathVariable(value = "email") String email) {
-		Optional<Doador> dbv = _doadorRepository.findByEmail(email);
+	@RequestMapping(value = "/doador/{cpf}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<Doador> GetByEmail(@PathVariable(value = "cpf") long cpf) {
+		Optional<Doador> dbv = _doadorRepository.findByCpf(cpf);
 		if (dbv.isPresent()) {
-			log.info(FIND_BY_ID + email);
+			log.info(FIND_BY_ID + cpf);
 			return new ResponseEntity<Doador>(dbv.get(), HttpStatus.OK);
 		} else
 			log.info(NOT_FOUND_DOADOR);
@@ -53,6 +54,7 @@ public class DoadorController {
 	@RequestMapping(value = "/doador", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Doador Post(@Valid @RequestBody Doador dbv) {
 		log.info(SAVE_DOADOR + dbv.toString());
+		log.info(CORS_TESTE);
 		return _doadorRepository.save(dbv);
 	}
 
