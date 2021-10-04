@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.treinaweb.springbootapi.entity.Ong;
 import br.com.treinaweb.springbootapi.repository.OngRepository;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Log
+@Slf4j
 public class OngController {
 	
 	private final static String FIND_ALL = "Realizando consulta de todos os Ong...";
@@ -62,7 +62,7 @@ public class OngController {
 		Optional<Ong> oldDbv = _ongRepository.findById(id);
 		if (oldDbv.isPresent()) {
 			Ong dbv = oldDbv.get();
-			dbv.setName(novoDbv.getName());
+			dbv.setNome(novoDbv.getNome());
 			log.info(UPDATE_ONG + dbv.toString());
 			_ongRepository.save(dbv);
 			return new ResponseEntity<Ong>(dbv, HttpStatus.OK);

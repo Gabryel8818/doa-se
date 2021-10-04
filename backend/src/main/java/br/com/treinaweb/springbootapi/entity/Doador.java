@@ -8,10 +8,12 @@ import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "doador")
 @Getter
+@ToString
 @Setter
 public class Doador {
 
@@ -24,8 +26,6 @@ public class Doador {
 	private String cep;
 	private String estado;
 	private String cidade;
-	private String categoria;
 	private String logradouro;
-	private String cpf;
-
+	private long cpf;
 }

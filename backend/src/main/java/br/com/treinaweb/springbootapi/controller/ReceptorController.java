@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.treinaweb.springbootapi.entity.Receptor;
 import br.com.treinaweb.springbootapi.repository.ReceptorRepository;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@Log
+@Slf4j
 public class ReceptorController {
 
 	private final static String FIND_ALL = "Realizando consulta de todos os Receptor...";
@@ -62,7 +62,7 @@ public class ReceptorController {
 		Optional<Receptor> oldDbv = _receptorRepository.findById(id);
 		if (oldDbv.isPresent()) {
 			Receptor dbv = oldDbv.get();
-			dbv.setName(novoDbv.getName());
+			dbv.setNome(novoDbv.getNome());
 			log.info(UPDATE_RECEPTOR + dbv.toString());
 			_receptorRepository.save(dbv);
 			return new ResponseEntity<Receptor>(dbv, HttpStatus.OK);

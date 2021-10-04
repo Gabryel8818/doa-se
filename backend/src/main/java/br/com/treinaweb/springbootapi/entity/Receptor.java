@@ -20,13 +20,12 @@ public class Receptor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id_receptor;
-	private String name;
+	private String nome;
 	private String telefone;
 	private String email;
 	private String cep;
 	private String estado;
 	private String cidade;
-	private String categoria;
 	private String logradouro;
 
 }
