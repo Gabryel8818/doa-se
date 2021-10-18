@@ -24,6 +24,12 @@ const firebaseConfig = {
 const url_to_fetch = "http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador"
 
 
+// SucessRegister
+
+function SucessRegister(){
+
+}
+
   // SIGNUP
   function registrarse(){
         const value_email = document.querySelector('#signup-email').value
@@ -64,8 +70,10 @@ const url_to_fetch = "http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:80
                             .then(json => console.log(json))
                             .catch(err => console.log(err))
 
-                          swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success");
-
+                          swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
+                          .then((value) => {
+                            window.location.href = "index.html"
+                          })
                       })
                   .catch(err => {
                     console.log(err)
