@@ -70,6 +70,7 @@ function SucessRegister(){
                             .then(json => console.log(json))
                             .catch(err => console.log(err))
 
+                          // mensagem de sucesso
                           swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
                           .then((value) => {
                             window.location.href = "index.html"
