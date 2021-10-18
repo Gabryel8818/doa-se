@@ -34,7 +34,28 @@ firebase.auth().onAuthStateChanged(function(user){
   if (user){
       var email = user.email
       document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
+
+      // Alterando o valor das doações do usuário
+      let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${email}`
+        const options =  {
+            method: 'GET',
+            mode: 'cors'
+          }
+        
+          fetch(url_to_doacoes,options)
+              .then(async (response) => {
+                var doacoes_response = await response.json()
+                  console.log(doacoes_response)
+    
+        
+                
+              })
+    
+    
+        document.getElementById("doacoes-mes").innerHTML = "R$ 300"
   }else
     console.log("disconnected")
 
 })
+
+
