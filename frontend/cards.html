@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+
     <title>Doase</title>
 
     <!-- Custom fonts for this template-->
@@ -40,7 +42,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -52,9 +54,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="dashboard.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Painel</span></a>
+                    <span>dashboard</span></a>
             </li>
 
             <!-- Divider -->
@@ -76,8 +78,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Componentes:</h6>
-                        <a class="collapse-item" href="buttons.html">Botões</a>
-                        <a class="collapse-item active" href="cards.html">Cartões</a>
+                        <a class="collapse-item" href="mapa.html">Mapa</a>
+                        <a class="collapse-item active" href="cards.html">Doações</a>
                     </div>
                 </div>
             </li>
@@ -411,11 +413,20 @@
                    <!-- DataTales Example -->
                    <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Tabela de doações</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>categoria</th>
+                                        <th>ong</th>
+                                        <th>Doação</th>
+                                    </tr>
+                                </thead>
 
                             </table>
                         </div>
