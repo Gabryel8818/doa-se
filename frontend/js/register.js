@@ -21,8 +21,14 @@ const firebaseConfig = {
   });
 
 
-const url_to_fetch = "http://ec2-18-228-154-34.sa-east-1.compute.amazonaws.com:8086/doador"
+const url_to_fetch = "http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador"
 
+
+// SucessRegister
+
+function SucessRegister(){
+
+}
 
   // SIGNUP
   function registrarse(){
@@ -64,8 +70,11 @@ const url_to_fetch = "http://ec2-18-228-154-34.sa-east-1.compute.amazonaws.com:8
                             .then(json => console.log(json))
                             .catch(err => console.log(err))
 
-                          swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success");
-
+                          // mensagem de sucesso
+                          swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
+                          .then((value) => {
+                            window.location.href = "index.html"
+                          })
                       })
                   .catch(err => {
                     console.log(err)
