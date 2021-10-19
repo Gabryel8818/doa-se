@@ -19,10 +19,11 @@ const firebaseConfig = {
   });
   
   
-  function login(){
+function login(){
     const email = document.querySelector('#signin-email').value
     const senha = document.querySelector('#signin-password').value
-    auth
+    if ( email !== '' && email !== null && senha !== null && senha !== ''){
+      auth
       .signInWithEmailAndPassword(email,senha)
         .then((userCredential) => {
           var user = userCredential.user;
@@ -42,10 +43,13 @@ const firebaseConfig = {
   
             } else {
               console.log ("User disconnected")
+             
             }
   
   
           })
-  
-  }
+    } else {
+      swal("Erro", "Preencha todos os campos", "error");
+    }
+}
   
