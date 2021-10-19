@@ -1,23 +1,23 @@
 
 async function loadIntoTable(url, table) {
-
-    const response = await fetch(url);
+    const options =  {
+        method: 'GET',
+        mode: 'cors'
+      }
+    
+    const response = await fetch(url,options);
     const data = await response.json()
     data.forEach(doacao => {
       console.log(doacao)
-      document.querySelector("table").innerHTML = `
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>categoria</th>
-                <th>ong</th>
-            </tr>
-        </thead>
+      document.querySelector("table").innerHTML += `
         <tbody>
-            <tr>
-                <td>${doacao.nome}</td>
+            <tr id="${doacao.id_doacao}">
+                <td>${doacao.id_doacao}</td>  
+                <td >${doacao.nome}</td>
                 <td>${doacao.categoria}</td>
                 <td>${doacao.ong}</td>
+                <td> <button id="button-registrar" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="receber_doacao()">Receber</button>
+                <button id="button-registrar" class="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" onclick="deletar_doacao(${doacao.id_doacao})">Deletar</button> </td>
             </tr>
         </tbody>
             
