@@ -36,7 +36,8 @@ firebase.auth().onAuthStateChanged(function(user){
       document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
 
       // Alterando o valor das doações do usuário
-      let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${email}`
+     //let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${email}`
+      let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/`
         const options =  {
             method: 'GET',
             mode: 'cors'
@@ -45,8 +46,7 @@ firebase.auth().onAuthStateChanged(function(user){
           fetch(url_to_doacoes,options)
               .then(async (response) => {
                 var doacoes_response = await response.json()
-                  console.log(doacoes_response)
-    
+                  console.log(doacoes_response) 
         
                 
               })
@@ -59,3 +59,45 @@ firebase.auth().onAuthStateChanged(function(user){
 })
 
 
+
+function receber_doacao(){
+    firebase.auth().onAuthStateChanged(function(user){
+      if(user){
+       const putMethod = {
+         method: 'PUT', // Method itself
+         headers: {  'Content-type': 'application/json; charset=UTF-8' },
+         body: JSON.stringify(data)
+
+       }
+        console.log("User: ", user.email)
+        let url_to_put = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${user.email}`
+        //fetch(url_to_put,putMethod)
+          //.then(response => response.json())
+          //.then(data => console.log(data)
+
+    }
+  })
+
+}
+
+
+function deletar_doacao(id){
+  firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+      
+      const options = {
+        method: 'DELETE',
+        headers: {  'Content-type': 'application/json; charset=UTF-8'}
+      }
+      let url_to_delete = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${id}`
+      fetch(url_to_delete,options)
+      .then(response => {
+        var element = document.getElementById(id)
+        element.remove();
+      })
+
+
+    }
+
+  })
+}
