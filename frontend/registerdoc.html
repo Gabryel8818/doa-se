@@ -47,17 +47,17 @@
                         </div>
                         
                         <div class="form-floating mb-3">
-                          
-                          <input type="email" class="form-control" id="signup-categoria" placeholder="categoria" title="Exemplo: categoria">
-                          <label for="cars">Escolha a categoria:</label>
-
-
-                          <select name="categoria" id="categoria">
-                           <option value="BRINQUEDOS">BRINQUEDOS</option>
-                           <option value="ELETRODOMESTICOS">ELETRODOMESTICOS</option>
-                           <option value="ROUPA">ROUPA</option>
-  
-                          </select>
+                          <div class="form-group">
+                            <label for="categoria">Selecione a Categoria</label>
+                            <select name="categoria" class="form-control" id="categoria">
+                              <option value="BRINQUEDOS">BRINQUEDOS</option>
+                              <option value="ELETRODOMESTICOS">ELETRODOMESTICOS</option>
+                              <option value="ROUPA">ROUPA</option>
+                              <option value="ALIMENTACAO">ALIMENTACAO</option>
+                              <option value="TECNOLOGIA">TECNOLOGIA</option>
+                              <option value="ITENS_CASA">ITENS_CASA</option>
+                            </select>
+                          </div>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -102,7 +102,7 @@
                         </div>
                         
                         <div class="d-grid">
-                          <button id="button-registrardoc" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="registrarse()">Registrar</button>
+                          <button id="button-registrardoc" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="registrardoc()">Registrar</button>
                           <div class="text-center">
 
                             
