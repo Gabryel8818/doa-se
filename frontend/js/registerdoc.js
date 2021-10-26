@@ -21,7 +21,7 @@ const firebaseConfig = {
   });
 
 
-const url_to_fetch = "http://ec2-18-231-54-129.sa-east-1.compute.amazonaws.com:8086/doador"
+
 
 
   // SIGNUP
@@ -34,10 +34,11 @@ const url_to_fetch = "http://ec2-18-231-54-129.sa-east-1.compute.amazonaws.com:8
         const value_logradouro = document.querySelector('#signup-logradouro').value
         const value_estado = document.querySelector('#signup-estado').value
         const value_cpf = document.querySelector('#signup-cpf').value
-        const value_categoria = document.querySelector('#signup-categoria').value
+        const value_categoria = document.getElementById('categoria').value
         const value_cidade = document.querySelector('#signup-cidade').value
+
         let dataDoacao = {
-          value_nomedoc: value_nomedoc,
+          nome: value_nomedoc,
           categoria: value_categoria,
           doador: {
               nome: value_nome,
@@ -81,7 +82,7 @@ const url_to_fetch = "http://ec2-18-231-54-129.sa-east-1.compute.amazonaws.com:8
                                headers: {"Content-Type": "application/json"}
                            }
  
-                           fetch("http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao", options)
+                           fetch("https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao", options)
                              .then( response => response.json())
                              .then(console.log("Doacao:"))
                              .then(json => console.log(json))
