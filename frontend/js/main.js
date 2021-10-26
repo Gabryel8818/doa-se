@@ -89,7 +89,7 @@ function deletar_doacao(id){
         method: 'DELETE',
         headers: {  'Content-type': 'application/json; charset=UTF-8'}
       }
-      let url_to_delete = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${id}`
+      let url_to_delete = `https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${id}`
       fetch(url_to_delete,options)
       .then(response => {
         var element = document.getElementById(id)
