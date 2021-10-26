@@ -84,8 +84,17 @@ const firebaseConfig = {
  
                            fetch("https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao", options)
                              .then( response => response.json())
-                             .then(console.log("Doacao:"))
+                             .then(resposta => {
+                              // mensagem de sucesso
+                              swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
+                                .then((value) => {
+                                  window.location.href = "cards.html"
+                          })
+                             })
                              .then(json => console.log(json))
                              .catch(err => console.log(err))
-
+                              .catch(err => {
+                                console.log(err)
+                                swal("Erro", "Seu cadastro não foi efetuado", "error");
+                              })
   }
