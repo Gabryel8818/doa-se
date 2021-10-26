@@ -22,13 +22,14 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 public class DoadorController {
-
+	
 	private final static String FIND_ALL = "Realizando consulta de todos os Doador...";
 	private final static String FIND_BY_ID = "Consultando Doador especifico:";
 	private final static String SAVE_DOADOR = "Salvando Doador na base. ";
 	private final static String UPDATE_DOADOR = "Atualizando Doador! ";
 	private final static String NOT_FOUND_DOADOR = "Doador não encontrado! ";
 	private final static String DELETE_DOADOR = "Doador deletado da base!";
+	private static final String CORS_TESTE = "Testando CORS";
 
 	@Autowired
 	private DoadorRepository _doadorRepository;
@@ -40,9 +41,9 @@ public class DoadorController {
 	}
 
 	@RequestMapping(value = "/doador/{cpf}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Doador> GetByCpf(@PathVariable(value = "cpf") long cpf) {
+	public ResponseEntity<Doador> GetByEmail(@PathVariable(value = "cpf") long cpf) {
 		Optional<Doador> dbv = _doadorRepository.findByCpf(cpf);
-		if (!dbv.isEmpty()) {
+		if (dbv.isPresent()) {
 			log.info(FIND_BY_ID + cpf);
 			return new ResponseEntity<Doador>(dbv.get(), HttpStatus.OK);
 		} else
@@ -53,12 +54,14 @@ public class DoadorController {
 	@RequestMapping(value = "/doador", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public Doador Post(@Valid @RequestBody Doador dbv) {
 		log.info(SAVE_DOADOR + dbv.toString());
+		log.info(CORS_TESTE);
 		return _doadorRepository.save(dbv);
 	}
 
 	@Transactional
 	@RequestMapping(value = "/doador/{id}", method = RequestMethod.PUT, produces = "application/json", consumes = "application/json")
-	public ResponseEntity<Doador> Put(@PathVariable(value = "id") long id, @Valid @RequestBody Doador novoDbv) {
+	public ResponseEntity<Doador> Put(@PathVariable(value = "id") long id,
+			@Valid @RequestBody Doador novoDbv) {
 		Optional<Doador> oldDbv = _doadorRepository.findById(id);
 		if (oldDbv.isPresent()) {
 			Doador dbv = oldDbv.get();
@@ -68,7 +71,7 @@ public class DoadorController {
 			return new ResponseEntity<Doador>(dbv, HttpStatus.OK);
 		} else
 			log.info(NOT_FOUND_DOADOR + oldDbv.toString());
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/doador/{id}", method = RequestMethod.DELETE, produces = "application/json")
@@ -82,5 +85,5 @@ public class DoadorController {
 			log.info(NOT_FOUND_DOADOR);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	
 }

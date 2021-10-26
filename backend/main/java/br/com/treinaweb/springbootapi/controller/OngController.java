@@ -71,7 +71,7 @@ public class OngController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
-	@RequestMapping(value = "/ong/{id}"	, method = RequestMethod.DELETE, produces = "application/json")
+	@RequestMapping(value = "/ong/{id}", method = RequestMethod.DELETE, produces = "application/json")
 	public ResponseEntity<Object> Delete(@PathVariable(value = "id") long id) {
 		Optional<Ong> dbv = _ongRepository.findById(id);
 		if (dbv.isPresent()) {
