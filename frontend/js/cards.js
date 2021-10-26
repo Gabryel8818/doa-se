@@ -29,4 +29,4 @@ async function loadIntoTable(url, table) {
 
 
 
-loadIntoTable("http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao", document.querySelector("table"));
+loadIntoTable("https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao", document.querySelector("table"));
