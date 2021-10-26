@@ -37,7 +37,7 @@ firebase.auth().onAuthStateChanged(function(user){
 
       // Alterando o valor das doações do usuário
      //let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${email}`
-      let url_to_doacoes = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/`
+      let url_to_doacoes = `https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/`
         const options =  {
             method: 'GET',
             mode: 'cors'
@@ -70,7 +70,7 @@ function receber_doacao(){
 
        }
         console.log("User: ", user.email)
-        let url_to_put = `http://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${user.email}`
+        let url_to_put = `https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${user.email}`
         //fetch(url_to_put,putMethod)
           //.then(response => response.json())
           //.then(data => console.log(data)
