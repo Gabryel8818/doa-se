@@ -60,25 +60,70 @@ firebase.auth().onAuthStateChanged(function(user){
 
 
 
-function receber_doacao(){
+async function receber_doacao(id){
     firebase.auth().onAuthStateChanged(function(user){
       if(user){
-       const putMethod = {
-         method: 'PUT', // Method itself
-         headers: {  'Content-type': 'application/json; charset=UTF-8' },
-         body: JSON.stringify(data)
+      
+       fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${id}`)
+       .then(async (response) => {
+         var doacao_response = await response.json()
 
-       }
-        console.log("User: ", user.email)
-        let url_to_put = `https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${user.email}`
-        //fetch(url_to_put,putMethod)
-          //.then(response => response.json())
-          //.then(data => console.log(data)
+        let data = {
+          id_doacao: `${id}`,
+          nome: `${doacao_response.nome}`,
+          categoria: `${doacao_response.categoria}`,
+          ong: {
+            id_ong: `${doacao_response.ong.id}`,
+            nome: `${doacao_response.ong.nome}`,
+            telefone: `${doacao_response.ong.telefone}`,
+            email: `${doacao_response.ong.email}`,
+            cep: `${doacao_response.ong.cep}`,
+            estado: `${doacao_response.ong.estado}`,
+            cidade: `${doacao_response.ong.cidade}`,
+            logradouro: `${doacao_response.ong.logradouro}`,
+            cnpj: `${doacao_response.ong.cnpj}`
+          },
+          receptor: {
+            "id_receptor": 1,
+            "nome": `${user.email}`,
+            "telefone": `${doacao_response.receptor.telefone}`,
+            "email": `${user.email}`,
+            "cep": `${doacao_response.receptor.cep}`,
+            "estado": `${doacao_response.receptor.estado}`,
+            "cidade": `${doacao_response.receptor.cidade}`,
+            "logradouro": `${doacao_response.receptor.logradouro}`
+          },
+          doador: {
+            "id_doador": `${doacao_response.doador.id}`,
+            "nome": `${doacao_response.doador.nome}`,
+            "telefone": `${doacao_response.doador.telefone}`,
+            "email": `${doacao_response.doador.email}`,
+            "cep": `${doacao_response.doador.cep}`,
+            "estado": `${doacao_response.doador.estado}`,
+            "cidade": `${doacao_response.doador.cidade}`,
+            "logradouro": `${doacao_response.doador.email}`,
+            "cpf": `${doacao_response.doador.cpf}`
+          }
+        
+         }
+         console.log(data)
 
+         const putMethod = {
+          method: 'PUT', // Method itself
+          headers: {  'Content-type': 'application/json; charset=UTF-8' },
+          //body: JSON.stringify(data)
+        }
+
+
+       })
     }
   })
 
 }
+
+
+
+
 
 
 function deletar_doacao(id){
@@ -101,3 +146,7 @@ function deletar_doacao(id){
 
   })
 }
+
+
+
+
