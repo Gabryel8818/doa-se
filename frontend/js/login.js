@@ -44,8 +44,8 @@ function login(){
             if (user){
               fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador/`)
               .then(async (response) => {
-                var doacao_response = await response.json()
-                //localStorage.id = `${doacao_response.id}`
+                var doador_response = await response.json()
+                //localStorage.id = `${doador_response.id}`
                 window.location.href = "dashboard.html"
               })
   
