@@ -77,8 +77,11 @@ function SucessRegister(){
                           })
                       })
                   .catch(err => {
-                    console.log(err)
-                    swal("Erro", "Seu cadastro não foi efetuado", "error");
+                    if (err.message === "Password should be at least 6 characters") {
+                      swal("Erro", "Sua senha precisa ser maior que 6 caracteres", "error");
+                    }else if (err.message === 'The email address is already in use by another account.') {
+                      swal("Erro", "Este email ja foi cadastrado", "error");
+                    }
                   })
 
 
