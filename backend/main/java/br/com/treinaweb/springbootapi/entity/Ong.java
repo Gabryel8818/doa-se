@@ -11,10 +11,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "ong")
+@ToString
 @Getter
 @Setter
-@ToString
+@Table(name = "ong")
 public class Ong {
 
 	@Id

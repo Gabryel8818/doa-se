@@ -13,8 +13,8 @@ import lombok.ToString;
 @Entity
 @Table(name = "doador")
 @Getter
-@ToString
 @Setter
+@ToString
 public class Doador {
 
 	@Id
@@ -28,4 +28,5 @@ public class Doador {
 	private String cidade;
 	private String logradouro;
 	private long cpf;
+
 }

@@ -11,10 +11,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@ToString
+@Table(name = "receptor")
 @Getter
 @Setter
-@Table(name = "receptor")
+@ToString
 public class Receptor {
 
 	@Id

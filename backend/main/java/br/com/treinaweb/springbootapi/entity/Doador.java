@@ -11,15 +11,15 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "ong")
+@Table(name = "doador")
 @Getter
-@Setter
 @ToString
-public class Ong {
+@Setter
+public class Doador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_ong;
+	private long id_doador;
 	private String nome;
 	private String telefone;
 	private String email;
@@ -27,6 +27,5 @@ public class Ong {
 	private String estado;
 	private String cidade;
 	private String logradouro;
-	private long cnpj;
-
+	private long cpf;
 }

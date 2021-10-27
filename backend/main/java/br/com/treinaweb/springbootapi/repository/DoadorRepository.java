@@ -10,6 +10,6 @@ import br.com.treinaweb.springbootapi.entity.Doador;
 @Repository
 public interface DoadorRepository extends JpaRepository<Doador, Long>{
 
-	Optional<Doador> findByCpf(Long cpf);
+	Optional<Doador> findByCpf(long email);
 
 }
