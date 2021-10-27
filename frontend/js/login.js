@@ -32,14 +32,22 @@ function login(){
   
         .catch((error) => {
           var errorCode = error.code
+          console.log(errorCode)
           var errorMessage = error.message
+          if (errorMessage === "The password is invalid or the user does not have a password.") {
+            swal("Erro", 'Senha ou Email Inválidos','error')
+          }
         })
   
         auth
           .onAuthStateChanged((user) => {
             if (user){
-              
-              window.location.href = "dashboard.html"
+              fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador/`)
+              .then(async (response) => {
+                var doacao_response = await response.json()
+                //localStorage.id = `${doacao_response.id}`
+                window.location.href = "dashboard.html"
+              })
   
             } else {
               console.log ("User disconnected")
