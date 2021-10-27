@@ -1,4 +1,4 @@
-#Doa-se
+# Doa-se
 
 ## Objetivo
 
@@ -15,8 +15,8 @@ Nosso trabalho tem como objetivo facilitar a inclusão de doações, sejam elas 
 | Scss        | 1.43.4 |
 | Mysql(RDS)  |        |
 | EC2         | Ubuntu  20.04  |
-| Fireabse API AUth    |
-| Firehosting          |
+| Fireabse API AUth    | 8.3.0 |
+| Firehosting          | 8.3.0 |
 
 
 ## Arquitetura
