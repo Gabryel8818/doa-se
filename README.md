@@ -20,6 +20,7 @@ Nosso trabalho tem como objetivo facilitar a inclusão de doações, sejam elas 
 
 
 ## Arquitetura
+![Diagrama Doase](./frontend/img/arquitetura-doase.png)
 
 
 ## Funcionalidades
