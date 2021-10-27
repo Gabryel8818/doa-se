@@ -42,11 +42,28 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
     </td>
         <td align="center">
       <a href="https://github.com/gabrielsm14">
-        <img src="https://avatars.githubusercontent.com/u/58239113?v=4" width="100px;" alt="Foto do Gabriel Nascimento no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/58239113?v=4" width="100px;" alt="Foto do Gabriel Mendonça no GitHub"/><br>
         <sub>
-          <b>Mendonça</b>
+          <b>Gabriel Mendonça</b>
         </sub>
       </a>
     </td>
+      <td align="center">
+      <a href="https://github.com/Wes-Ley-Cor-Ean-O39">
+        <img src="https://avatars.githubusercontent.com/u/36468581?v=4" width="100px;" alt="Foto do Wesley Azevedo no GitHub"/><br>
+        <sub>
+          <b>Wesley Azevedo</b>
+        </sub>
+      </a>
+    </td>
+<td align="center">
+      <a href="https://github.com/joao1713">
+        <img src="https://avatars.githubusercontent.com/u/69879160?v=4" width="100px;" alt="Foto do Joao no GitHub"/><br>
+        <sub>
+          <b>Joao</b>
+        </sub>
+      </a>
+    </td>
+    
   </tr>
 </table>
