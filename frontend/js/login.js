@@ -42,11 +42,12 @@ function login(){
         auth
           .onAuthStateChanged((user) => {
             if (user){
+              window.location.href = "dashboard.html"
               fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador/`)
               .then(async (response) => {
                 var doador_response = await response.json()
                 //localStorage.id = `${doador_response.id}`
-                window.location.href = "dashboard.html"
+                
               })
   
             } else {
