@@ -39,11 +39,12 @@ public class DoadorController {
 		return _doadorRepository.findAll();
 	}
 
-	@RequestMapping(value = "/doador/{cpf}", method = RequestMethod.GET, produces = "application/json")
-	public ResponseEntity<Doador> GetByCpf(@PathVariable(value = "cpf") long cpf) {
-		Optional<Doador> dbv = _doadorRepository.findByCpf(cpf);
+	@RequestMapping(value = "/doador/{email}", method = RequestMethod.GET, produces = "application/json")
+	public ResponseEntity<Doador> GetByEmail(@PathVariable(value = "email") String email) {
+		String emailComplete = email + ".com";
+		Optional<Doador> dbv = _doadorRepository.findByEmail(emailComplete);
 		if (!dbv.isEmpty()) {
-			log.info(FIND_BY_ID + cpf);
+			log.info(FIND_BY_ID + email);
 			return new ResponseEntity<Doador>(dbv.get(), HttpStatus.OK);
 		} else
 			log.info(NOT_FOUND_DOADOR);
@@ -68,7 +69,7 @@ public class DoadorController {
 			return new ResponseEntity<Doador>(dbv, HttpStatus.OK);
 		} else
 			log.info(NOT_FOUND_DOADOR + oldDbv.toString());
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/doador/{id}", method = RequestMethod.DELETE, produces = "application/json")

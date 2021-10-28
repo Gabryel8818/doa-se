@@ -29,20 +29,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.PUT, "/doacao").permitAll()
 		.antMatchers(HttpMethod.PUT, "/doacao/**").permitAll()
 		.antMatchers(HttpMethod.PUT, "/ong").permitAll()
+		.antMatchers(HttpMethod.PUT, "/ong/**").permitAll()
 		.antMatchers(HttpMethod.PUT, "/receptor").permitAll()
+		.antMatchers(HttpMethod.PUT, "/receptor/**").permitAll()
 		.antMatchers(HttpMethod.PUT, "/doador").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/ong").permitAll()
+		.antMatchers(HttpMethod.PUT, "/doador/**").permitAll()
 		.antMatchers(HttpMethod.DELETE, "/ong/**").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/receptor").permitAll()
 		.antMatchers(HttpMethod.DELETE, "/receptor/**").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/doador").permitAll()
 		.antMatchers(HttpMethod.DELETE, "/doador/**").permitAll()
-		.antMatchers(HttpMethod.DELETE, "/doacao").permitAll()
 		.antMatchers(HttpMethod.DELETE, "/doacao/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/actuator").permitAll()
 		.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
 		.anyRequest().authenticated()
 		.and().csrf().disable().cors();
 	}
-
+	
 }
