@@ -41,7 +41,16 @@ logout.addEventListener('click', function () {
 firebase.auth().onAuthStateChanged(function(user){
 if (user){
     var email = user.email
-    document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${email}`
+    document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${sessionStorage.getItem("name_user")}`
+
+    fetch(`${url_doador}/${user.email}`)
+    .then( async response => {
+      id_user = await response.json()
+      user_id = id_user.id_doador
+      name_user = id_user.nome
+      sessionStorage.setItem("name_user", name_user)
+      sessionStorage.setItem("id_user", `${user_id}` )
+    })
 
     // Alterando o valor das doações do usuário
    //let url_to_doacoes = `https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${email}`
@@ -53,10 +62,7 @@ if (user){
       
         fetch(url_to_doacoes,options)
             .then(async (response) => {
-              var doacoes_response = await response.json()
-                console.log(doacoes_response) 
-      
-              
+              var doacoes_response = await response.json()    
             })
   
   
@@ -98,7 +104,7 @@ async function receber_doacao(id){
            },
            receptor: {
              id_receptor:`${doacao_response.receptor.id_receptor}`,
-             nome: `${user.email}`,
+             nome: `${sessionStorage.getItem("name_user")}`,
              telefone: `${doacao_response.receptor.telefone}`,
              email: `${user.email}`,
              cep: `${doacao_response.receptor.cep}`,
