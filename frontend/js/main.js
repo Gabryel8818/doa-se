@@ -41,7 +41,6 @@ logout.addEventListener('click', function () {
 firebase.auth().onAuthStateChanged(function(user){
 if (user){
     var email = user.email
-    document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${sessionStorage.getItem("name_user")}`
 
     fetch(`${url_doador}/${user.email}`)
     .then( async response => {
@@ -49,7 +48,8 @@ if (user){
       user_id = id_user.id_doador
       name_user = id_user.nome
       sessionStorage.setItem("name_user", name_user)
-      sessionStorage.setItem("id_user", `${user_id}` )
+      sessionStorage.setItem("id_user", `${user_id}`)
+      document.querySelector('#nomeLogado').innerHTML = `Bem vindo ${sessionStorage.getItem("name_user")}`
     })
 
     // Alterando o valor das doações do usuário
@@ -83,7 +83,7 @@ async function receber_doacao(id){
         console.log(doador_id.id_doador)
 
 
-        fetch(`${url_doacao}/${id}`)
+        fetch(`${url_doacao}/id/${id}`)
         .then(async (response) => {
           var doacao_response = await response.json()
    
@@ -136,11 +136,11 @@ async function receber_doacao(id){
          }
          console.log(`${url_doacao}/${id}`)
 
-         fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/${id}`,putMethod)
+         fetch(`https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doacao/id/${id}`,putMethod)
           .then(response => {
             swal("Sucesso",`O novo receptor da doação ${data.nome} é: ${data.receptor.nome}`,'success')
             .then(hehe => {
-              document.getElementById('status').innerHTML = 'a'
+              document.getElementById('status').innerHTML = ''
               document.getElementById('status').innerHTML = '<span id="status" class="badge badge-danger">Indisponível</span>'
             })
           .catch(erro => {

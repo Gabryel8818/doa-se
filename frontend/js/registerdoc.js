@@ -40,6 +40,7 @@ const firebaseConfig = {
         let dataDoacao = {
           nome: value_nomedoc,
           categoria: value_categoria,
+          status: 'D',
           doador: {
               nome: value_nome,
               telefone: value_telefone,

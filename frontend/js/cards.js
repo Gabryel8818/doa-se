@@ -18,7 +18,7 @@ async function loadIntoTable(url, table) {
                 <td>${doacao.categoria}</td>
                 <td>${doacao.ong.nome}</td>
                  <td>${doacao.doador.nome}</td>
-                 <td><span id="a" class="badge badge-success">Dsisponível</span></td>
+                 <td><span id="a" class="badge badge-success">${doacao.status}</span></td>
                 <td> <button id="button-registrar" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="receber_doacao(${doacao.id_doacao})">Receber</button>
                 <button id="button-registrar" class="btn btn-lg btn-danger btn-login text-uppercase fw-bold mb-2" onclick="deletar_doacao(${doacao.id_doacao})">Deletar</button> </td>
             </tr>
