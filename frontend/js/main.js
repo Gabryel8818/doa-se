@@ -30,7 +30,7 @@ logout.addEventListener('click', function () {
       .auth()
       .signOut()
       .then(function () {
-        window.location.href = "index.html";
+        window.location.href = "../index.html";
 
       }, function (error) {
           console.error(error);

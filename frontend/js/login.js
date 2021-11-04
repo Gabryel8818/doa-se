@@ -42,7 +42,7 @@ async function login(){
         auth
           .onAuthStateChanged((user) => {
             if (user){
-              window.location.href = "dashboard.html" 
+              window.location.href = "./site/dashboard.html" 
             } else {
               console.log ("User disconnected")
              

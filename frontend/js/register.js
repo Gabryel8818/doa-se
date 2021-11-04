@@ -24,11 +24,7 @@ const firebaseConfig = {
 const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador"
 
 
-// SucessRegister
 
-function SucessRegister(){
-
-}
 
   // SIGNUP
   function registrarse(){
@@ -107,4 +103,15 @@ function buscaCEP(){
 
         
       })
+}
+
+
+function selectType(){
+  selection = document.getElementById('selection').value
+  if(selection === 'ong'){
+    window.location.href = "register-ong.html"
+  } else {
+    window.location.href = "register-doador.html"
+
+  }
 }
