@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>doase</title>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/940/940715.png"/>
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!--Boootstrap CDN  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+    <!-- SWAL CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Firebase cdn -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+
+
+  </head>
+  <body>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.1/firebase-analytics.js";
+    </script>
+
+
+
+    <div class="container-fluid ps-md-0">
+      <div class="row g-0">
+        <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-8 mx-auto">
+                  <h3 class="login-heading mb-4">Bem vindo ao cadastro da Doase!</h3>
+
+                  <!-- Sign In Form -->
+                  <form id="signup-form" class="sla">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-email" placeholder="name@example.com" title="Exemplo: name@example.com">
+                      <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-nome" placeholder="Jubiscleu" title="Exemplo: Jubiscleu">
+                      <label for="floatingInput">Nome</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-cep" placeholder="Rua tal tal" title="Rua: Tal tal">
+                      <label for="floatingInput">CEP</label>
+                    </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="customCheck" onclick="buscaCEP()">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Carregar Endereço
+                          </label>
+                        </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-rua" placeholder="Rua tal tal" title="Rua: Tal tal">
+                      <label for="floatingInput">Rua</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-estado" placeholder="Rua tal tal" title="Rua: Tal tal">
+                      <label for="floatingInput">Estado</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-telefone" placeholder="Rua tal tal" title="Rua: Tal tal">
+                      <label for="floatingInput">Telefone</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="number" class="form-control" id="signup-cpf" placeholder="53381200753" title="CPF: 53381200753 ">
+                      <label for="floatingInput">CNPJ</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control" id="signup-password" placeholder="Password">
+                      <label for="floatingPassword">Senha</label>
+                      <br>
+                    <div class="d-grid">
+                      <button id="button-registrar" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="registrarse()">Registrar</button>
+                      <div class="text-center">
+                        <a class="small" href="index.html">Fazer login</a>
+                        <br>
+                      </div>
+                    </div>
+
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+      <script src="../js/register.js" charset="utf-8"></script>
+
+  </body>
+</html>
