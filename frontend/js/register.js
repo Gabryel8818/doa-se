@@ -27,7 +27,7 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
 
 
   // SIGNUP
-  function registrarse(){
+  function registrar_doador(){
         const value_email = document.querySelector('#signup-email').value
         const value_senha = document.querySelector('#signup-password').value
         const value_nome = document.querySelector('#signup-nome').value
@@ -36,6 +36,7 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
         const value_rua = document.querySelector('#signup-rua').value
         const value_estado = document.querySelector('#signup-estado').value
         const value_cpf = document.querySelector('#signup-cpf').value
+
         let data = {
           email: value_email,
           nome: value_nome,
@@ -82,6 +83,64 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
 
 
   }
+
+
+  function registrar_ong(){
+    const value_email = document.querySelector('#signup-email').value
+    const value_senha = document.querySelector('#signup-password').value
+    const value_nome = document.querySelector('#signup-nome').value
+    const value_telefone = document.querySelector('#signup-telefone').value
+    const value_cep = document.querySelector('#signup-cep').value
+    const value_rua = document.querySelector('#signup-rua').value
+    const value_estado = document.querySelector('#signup-estado').value
+    const value_cnpj = document.querySelector('#signup-cnpj').value
+
+    let data = {
+      email: value_email,
+      nome: value_nome,
+      telefone: value_telefone,
+      cep: value_cep,
+      rua: value_rua,
+      estado: value_estado,
+      cpf: value_cnpj
+    }
+
+
+    firebase.auth()
+                .createUserWithEmailAndPassword(value_email, value_senha)
+                .then(userCredential => {
+                      console.log('sign-up')
+                      var user = userCredential.user;
+
+                      // options para o fetch
+                      options = {
+                          method: 'POST',
+                          mode: 'cors',
+                          body: JSON.stringify(data), // passando os dados da lista para o POST
+                          headers: {"Content-Type": "application/json"}
+                      }
+
+                       fetch(url_to_fetch, options)
+                        .then( response => response.json())
+                        .then(json => console.log(json))
+                        .catch(err => console.log(err))
+
+                      // mensagem de sucesso
+                      swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
+                      .then((value) => {
+                        window.location.href = "index.html"
+                      })
+                  })
+              .catch(err => {
+                if (err.message === "Password should be at least 6 characters") {
+                  swal("Erro", "Sua senha precisa ser maior que 6 caracteres", "error");
+                }else if (err.message === 'The email address is already in use by another account.') {
+                  swal("Erro", "Este email ja foi cadastrado", "error");
+                }
+              })
+
+
+}
 
 
 function buscaCEP(){
