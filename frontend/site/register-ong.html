@@ -37,7 +37,7 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-9 col-lg-8 mx-auto">
-                  <h3 class="login-heading mb-4">Bem vindo ao cadastro da Doase!</h3>
+                  <h3 class="login-heading mb-4">Bem vindo ao cadastro de ongs da Doase!</h3>
 
                   <!-- Sign In Form -->
                   <form id="signup-form" class="sla">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control" id="signup-nome" placeholder="Jubiscleu" title="Exemplo: Jubiscleu">
-                      <label for="floatingInput">Nome</label>
+                      <label for="floatingInput">Nome da instituição</label>
                     </div>
                     <div class="form-floating mb-3">
                       <input type="email" class="form-control" id="signup-cep" placeholder="Rua tal tal" title="Rua: Tal tal">
@@ -72,6 +72,10 @@
                       <label for="floatingInput">Telefone</label>
                     </div>
                     <div class="form-floating mb-3">
+                      <input type="email" class="form-control" id="signup-cidade" placeholder="74261465000132" title="cnpj: 74261465000132 ">
+                      <label for="floatingInput">cidade</label>
+                    </div>
+                    <div class="form-floating mb-3">
                       <input type="number" class="form-control" id="signup-cnpj" placeholder="74261465000132" title="cnpj: 74261465000132 ">
                       <label for="floatingInput">CNPJ</label>
                     </div>
@@ -80,9 +84,9 @@
                       <label for="floatingPassword">Senha</label>
                       <br>
                     <div class="d-grid">
-                      <button id="button-registrar" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="registrarse()">Registrar</button>
+                      <button id="button-registrar" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" onclick="registrar_ong()">Registrar</button>
                       <div class="text-center">
-                        <a class="small" href="index.html">Fazer login</a>
+                        <a class="small" href="../index.html">Fazer login</a>
                         <br>
                       </div>
                     </div>

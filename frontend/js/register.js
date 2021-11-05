@@ -22,20 +22,21 @@ const firebaseConfig = {
 
 
 const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/doador"
-
+const url_to_ong  = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8086/ong"
 
 
 
   // SIGNUP
   function registrar_doador(){
-        const value_email = document.querySelector('#signup-email').value
-        const value_senha = document.querySelector('#signup-password').value
-        const value_nome = document.querySelector('#signup-nome').value
-        const value_telefone = document.querySelector('#signup-telefone').value
-        const value_cep = document.querySelector('#signup-cep').value
-        const value_rua = document.querySelector('#signup-rua').value
-        const value_estado = document.querySelector('#signup-estado').value
-        const value_cpf = document.querySelector('#signup-cpf').value
+        const value_email       = document.querySelector('#signup-email').value
+        const value_senha       = document.querySelector('#signup-password').value
+        const value_nome        = document.querySelector('#signup-nome').value
+        const value_telefone    = document.querySelector('#signup-telefone').value
+        const value_cep         = document.querySelector('#signup-cep').value
+        const value_rua         = document.querySelector('#signup-rua').value
+        const value_estado      = document.querySelector('#signup-estado').value
+        const value_cpf         = document.querySelector('#signup-cpf').value
+        const value_cidade      =  document.querySelector('#signup-cidade').value
 
         let data = {
           email: value_email,
@@ -70,7 +71,7 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
                           // mensagem de sucesso
                           swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
                           .then((value) => {
-                            window.location.href = "index.html"
+                            window.location.href = "../index.html"
                           })
                       })
                   .catch(err => {
@@ -86,23 +87,25 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
 
 
   function registrar_ong(){
-    const value_email = document.querySelector('#signup-email').value
-    const value_senha = document.querySelector('#signup-password').value
-    const value_nome = document.querySelector('#signup-nome').value
-    const value_telefone = document.querySelector('#signup-telefone').value
-    const value_cep = document.querySelector('#signup-cep').value
-    const value_rua = document.querySelector('#signup-rua').value
-    const value_estado = document.querySelector('#signup-estado').value
-    const value_cnpj = document.querySelector('#signup-cnpj').value
-
-    let data = {
+    const value_email     = document.querySelector('#signup-email').value
+    const value_senha     = document.querySelector('#signup-password').value
+    const value_nome      = document.querySelector('#signup-nome').value
+    const value_telefone  = document.querySelector('#signup-telefone').value
+    const value_cep       = document.querySelector('#signup-cep').value
+    const value_rua       = document.querySelector('#signup-rua').value
+    const value_estado    = document.querySelector('#signup-estado').value
+    const value_cnpj      = document.querySelector('#signup-cnpj').value
+    const value_cidade    =  document.querySelector('#signup-cidade').value
+    
+     let data = {
       email: value_email,
       nome: value_nome,
       telefone: value_telefone,
       cep: value_cep,
       rua: value_rua,
       estado: value_estado,
-      cpf: value_cnpj
+      cidade: value_cidade,
+      cnpj: value_cnpj
     }
 
 
@@ -115,12 +118,12 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
                       // options para o fetch
                       options = {
                           method: 'POST',
-                          mode: 'cors',
+                          mode: 'no-cors',
                           body: JSON.stringify(data), // passando os dados da lista para o POST
                           headers: {"Content-Type": "application/json"}
                       }
 
-                       fetch(url_to_fetch, options)
+                       fetch(url_to_ong, options)
                         .then( response => response.json())
                         .then(json => console.log(json))
                         .catch(err => console.log(err))
@@ -128,7 +131,7 @@ const url_to_fetch = "https://ec2-52-67-195-32.sa-east-1.compute.amazonaws.com:8
                       // mensagem de sucesso
                       swal("Sucesso", "Seu cadastro foi efetuado com sucesso", "success")
                       .then((value) => {
-                        window.location.href = "index.html"
+                        window.location.href = "../index.html"
                       })
                   })
               .catch(err => {
@@ -159,6 +162,7 @@ function buscaCEP(){
         console.log(viacep_response.logradouro);
         document.getElementById('signup-rua').value = viacep_response.logradouro
         document.getElementById('signup-estado').value = viacep_response.uf
+        document.getElementById('signup-cidade').value = viacep_response.localidade
 
         
       })
